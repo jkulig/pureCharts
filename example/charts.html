@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	
+	<meta charset="utf-8">
+	<title>Pure Charts example</title>
+	<meta name="description" content="">
+
+
+	<link rel="stylesheet" href="skeleton.css">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="../css/purecharts.css">	
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="../src/jquery.purecharts.js"></script>	
+	
+	<script>
+		$(document).ready(function() {
+			$('#barchart').pureCharts("bar", {height: 300});
+			$('#colchart').pureCharts("col", {height: 300});	
+		})
+		
+	</script>
+</head>
+<body>
+	<div class="container">				
+		<div class="eight columns offset-by-four">
+			<h1>Chart example</h1>
+			<div id="barchart" class="chart">
+				<h4 class="title">Languages</h4>
+				<div class="block">
+					<div class="fill" data-value="86%" data-color="#6086ac">HTML/CSS</div>
+				</div>
+				<div class="block">
+					<div class="fill" data-value="72%" data-color="#55789a">Javascript</div>
+				</div>
+				<div class="block">
+					<div class="fill" data-value="65%" data-color="#4a6886">MySQL</div>
+				</div>
+				<div class="block">
+					<div class="fill" data-value="60%" data-color="#3f5871">PHP</div>
+				</div>
+				<div class="block">
+					<div class="fill" data-value="12%" data-color="#34495E">Ruby</div>
+				</div>
+				
+			</div>
+			
+			<div id="colchart" class="chart">
+				<h4 class="title">Concepts</h4>
+				<div class="block">
+					<div class="fill" data-value="46%" data-color="#742c4d">OOP</div>
+				</div>
+				<div class="block">
+					<div class="fill" data-value="52%" data-color="#823056">UX</div>
+				</div>
+				<div class="block">
+					<div class="fill" data-value="65%" data-color="#903660">UI Design</div>
+				</div>
+				<div class="block">
+					<div class="fill" data-value="78%" data-color="#9f3c6a">Accessibility</div>
+				</div>
+				<div class="block">
+					<div class="fill" data-value="85%" data-color="#b04476">Usability</div>
+				</div>
+				<div class="block">
+					<div class="fill" data-value="89%" data-color="#C44C84">W3C Standards</div>
+				</div>
+				
+			</div>				
+		</div>
+	</div>
+</body>
+</html>
