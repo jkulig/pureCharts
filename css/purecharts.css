@@ -13,9 +13,10 @@
 	text-indent: 1em;
 	color: #fff;
 }
-.block .title {
+.title {
 	text-align: center;
 	margin-bottom: 20px;
+	clear: left;
 }
 .cols .block {
 	float: left;
@@ -31,4 +32,19 @@
 .cols .label {
 	color: #fff;
 }
-
+.pie {
+	position: relative;
+}
+.pie .fill, .pie .block {
+	position: absolute;
+	background-color: $border-color;	
+}
+.pie .fill {
+	background: transparent;
+}
+.pie .hole {
+	display: none;
+	background-color: #fff;
+    position: absolute;
+    z-index: 2;
+}

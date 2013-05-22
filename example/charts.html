@@ -17,7 +17,8 @@
 	<script>
 		$(document).ready(function() {
 			$('#barchart').pureCharts("bar", {height: 300});
-			$('#colchart').pureCharts("col", {height: 300});	
+			$('#colchart').pureCharts("col", {height: 300});
+			$('#piechart').pureCharts("pie", {height: 300, donutRatio: 0.6});	
 		})
 		
 	</script>
@@ -25,9 +26,29 @@
 <body>
 	<div class="container">				
 		<div class="eight columns offset-by-four">
-			<h1>Chart example</h1>
-			<div id="barchart" class="chart">
-				<h4 class="title">Languages</h4>
+			<h1>Chart examples</h1>
+			
+			<h4 class="title">Frameworks</h4>
+			<div id="piechart" class="chart">
+				<div class="block">
+					<div class="fill" data-value="23%" data-color="#742c4d">Wordpress</div>
+				</div>
+				<div class="block">
+					<div class="fill" data-value="15%" data-color="#823056">Magento</div>
+				</div>
+				<div class="block">
+					<div class="fill" data-value="15%" data-color="#903660">Codeigniter</div>
+				</div>
+				<div class="block">
+					<div class="fill" data-value="26%" data-color="#9f3c6a">Opencart</div>
+				</div>
+				<div class="block">
+					<div class="fill" data-value="21%" data-color="#b04476">Concrete5</div>
+				</div>
+			</div>
+			
+			<h4 class="title">Languages</h4>
+			<div id="barchart" class="chart">	
 				<div class="block">
 					<div class="fill" data-value="86%" data-color="#6086ac">HTML/CSS</div>
 				</div>
@@ -46,8 +67,8 @@
 				
 			</div>
 			
+			<h4 class="title">Concepts</h4>
 			<div id="colchart" class="chart">
-				<h4 class="title">Concepts</h4>
 				<div class="block">
 					<div class="fill" data-value="46%" data-color="#742c4d">OOP</div>
 				</div>
@@ -66,8 +87,10 @@
 				<div class="block">
 					<div class="fill" data-value="89%" data-color="#C44C84">W3C Standards</div>
 				</div>
-				
-			</div>				
+			</div>	
+			
+			
+						
 		</div>
 	</div>
 </body>

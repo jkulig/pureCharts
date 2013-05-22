@@ -26,6 +26,7 @@
 				
 				$this.addClass('bar');
 				
+				// build bar chart
 				bl.css({"height": h + "px"})
 				  .children('.fill').each(function() {
 					   var fill = $(this),
@@ -40,7 +41,8 @@
 					width = ((100 / i)) + '%';
 				
 				$this.addClass('cols');
-									
+				
+				// build column chart					
 				bl.css({height: h + "px", width: width})
 				  .children('.label').css({textIndent: (60 - h) + "px"}).end()
 				  .each(function() {
@@ -50,41 +52,32 @@
 						fill.css({height: value, backgroundColor: color});
 				  }).end();
 			}
-		})	
-		
-		var chart = {
-						
-			drawPiechart: function() {
-	
-				var opt = this.options,		
-					h = opt.height,
-					dr = opt.donutRatio,	
-					graph = $('chart.pie'),
-					bg =  graph.parents('.content'),
-					bgimg = bg.css('backgroundImage'),
-					bgcol = bg.css('backgroundColor');
-		
-				graph.each(function() {
+			
+			if (type == "pie") {
+				var h = options.height,
+					dr = options.donutRatio;
+					
+				$this.addClass('pie');
+				
+				$this.each(function() {
 					
 					var slices = [],
 						labels = [],
-						counter = 0
-						gid = $(this).attr('id');
+						counter = 0;
+						//gid = $(this).attr('id');
 					
 					// iterate over all the slices
 					$(this)
-						.children('.slice').each(function() {
+						.find('.fill').each(function() {
 						    var slice = $(this),
-						        sliceId = gid + '-slice-' + (counter + 1),
 						        label = slice.html(),
-						        labelId = gid + '-label-' + (counter + 1),
 						        value = slice.attr('data-value'),
 						        color = slice.attr('data-color'),
 						        width = Math.round((parseInt(value)/100) * 360); // use value to calculate slice width
 						    
 						    // add id to slices
-						    slice.attr('id', sliceId);
-						       
+						    slice.addClass('slice-' + (counter + 1));
+						     
 						    // calculate slice pos based on previous slice start pos and its width    
 						    if (slices.length > 0 ) {
 						        var i = counter - 1,
@@ -98,29 +91,29 @@
 						    }
 						
 						    // build data array
-						    slices.push({id: sliceId, start: startPos, end: endPos, mid: midPos, val: width, col: color});
-						    labels.push({lbl: label, id: labelId, col: color});
+						    slices.push({id: 'slice-' + (counter + 1), start: startPos, end: endPos, mid: midPos, val: width, col: color});
+						    labels.push({lbl: label, id: 'label-' + (counter + 1), col: color});
 						 
+							
 						    counter++;
 						}).end()
 						.css({"height" : h + "px", "width": h + "px" })
-						.children('.title')
-							.css("lineHeight", h + "px").end()
 						.after('<p class="labels"></p>');
 							//.children('.labels').css("top", px(h + 20));
 					
-					
 					// create labels
-					$.each(labels,function() {
+					/*
+$.each(labels,function() {
 						
 						$('#' + gid).next('.labels').append('<span id="' + this.id + '">' + this.lbl + '</span>').children('span')
 							.closest('#' + this.id)
 								.css( "backgroundColor", this.col);
 							
 					});
+*/
 					
 					// create donut chart
-					if(opt.donut) {
+					if(options.donut) {
 						$(this).append('<div class="hole"></div>').children('.hole')
 								.css({
 									"display": 		"block",
@@ -129,22 +122,21 @@
 									"width": 		h * dr,
 									"left": 		(h - (h * dr)) / 2 + "px",
 									"top": 			(h - (h * dr)) / 2 + "px",
-									"backgroundColor": bgcol,
-									"backgroundImage": bgimg
+									"backgroundColor": '#ffffff'
 								})
 					}			
 					
 					// build the chart using array slices
 					for (var i=0; i<counter; i++) { 
-					    $('#' + slices[i]['id'])
+					    $('.' + slices[i]['id']).parent('.block')
 					        .css({
 					        	"height" : 		h + "px", 
 					        	"width": 		h + "px", 
 					        	"borderRadius": h/2 + "px",
 					        	"transform": 	"rotate(" + slices[i]['start'] + "deg)", 
 					        	"clip": 		"rect(0," + h + "px," + h + "px," + h/2 + "px)"})
-					        .html('<div class="fill"></div>')
 					        .children('.fill')
+					        	.text('')
 						        .css({
 						        	"height" : 			h + "px", 
 						        	"width": 			h + "px", 
@@ -157,7 +149,8 @@
 					
 					
 					// interaction
-					for (var i=0; i<counter; i++) { 
+					/*
+for (var i=0; i<counter; i++) { 
 						var lb = labels[i]['id'],
 							sl = slices[i]['id'],
 							mid = slices[i]['mid'], 
@@ -165,6 +158,7 @@
 						
 							expose(lb, sl, r, mid);
 					}
+*/
 					
 				
 				}); //end .graph.each()
@@ -172,14 +166,8 @@
 				
 			}
 			
-			 
-			
-		};
+		})	
 		
-		
-		//chart.drawBarchart();
-		//chart.drawColchart();
-		//chart.drawPiechart();
 		
 	}
 })(jQuery)
