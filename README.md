@@ -2,7 +2,7 @@
 
 Author: Jakub Kulig<br />
 Author Email: info@jkulig.com<br />
-Version: 0.5.0<br />
+Version: 0.5.1<br />
 License: Free General Public License (GPL)<br />
 
 <h2>Brief</h2>
