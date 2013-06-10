@@ -99,18 +99,11 @@
 						}).end()
 						.css({"height" : h + "px", "width": h + "px" })
 						.after('<p class="labels"></p>');
-							//.children('.labels').css("top", px(h + 20));
 					
 					// create labels
-					/*
-$.each(labels,function() {
-						
-						$('#' + gid).next('.labels').append('<span id="' + this.id + '">' + this.lbl + '</span>').children('span')
-							.closest('#' + this.id)
-								.css( "backgroundColor", this.col);
-							
+					$.each(labels,function() {
+						$('.labels').append('<span style="background-color:' + this.col + '">' + this.lbl + '</span>');
 					});
-*/
 					
 					// create donut chart
 					if(options.donut) {
